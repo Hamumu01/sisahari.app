@@ -2,11 +2,23 @@ import { useApp } from '@/contexts/AppContext';
 import { translations } from '@/lib/translations';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
-import { Sun, Moon, Monitor, Bell } from 'lucide-react';
+import { Switch } from '@/components/ui/switch';
+import { Sun, Moon, Monitor, Bell, Contrast, Type } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 
 const Settings = () => {
-  const { language, setLanguage, theme, setTheme } = useApp();
+  const { 
+    language, 
+    setLanguage, 
+    theme, 
+    setTheme,
+    seasonalTheme,
+    setSeasonalTheme,
+    highContrast,
+    setHighContrast,
+    dyslexiaFont,
+    setDyslexiaFont
+  } = useApp();
   const t = translations[language];
 
   const themes = [
@@ -82,6 +94,60 @@ const Settings = () => {
                 {lang.label}
               </Button>
             ))}
+          </div>
+        </div>
+
+        <div className="bg-card p-6 rounded-2xl shadow-card space-y-4">
+          <Label className="text-lg font-semibold">{t.seasonalTheme}</Label>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <Button
+              variant={seasonalTheme === 'auto' ? 'default' : 'outline'}
+              onClick={() => setSeasonalTheme('auto')}
+              className="justify-start h-auto py-4"
+            >
+              {t.autoSeasonal}
+            </Button>
+            <Button
+              variant={seasonalTheme === 'manual' ? 'default' : 'outline'}
+              onClick={() => setSeasonalTheme('manual')}
+              className="justify-start h-auto py-4"
+            >
+              {t.manualColor}
+            </Button>
+          </div>
+        </div>
+
+        <div className="bg-card p-6 rounded-2xl shadow-card space-y-4">
+          <Label className="text-lg font-semibold">{t.accessibility}</Label>
+          
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <Contrast className="w-5 h-5 text-muted-foreground" />
+                <Label htmlFor="high-contrast" className="text-base cursor-pointer">
+                  {t.highContrast}
+                </Label>
+              </div>
+              <Switch
+                id="high-contrast"
+                checked={highContrast}
+                onCheckedChange={setHighContrast}
+              />
+            </div>
+
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <Type className="w-5 h-5 text-muted-foreground" />
+                <Label htmlFor="dyslexia-font" className="text-base cursor-pointer">
+                  {t.dyslexiaFont}
+                </Label>
+              </div>
+              <Switch
+                id="dyslexia-font"
+                checked={dyslexiaFont}
+                onCheckedChange={setDyslexiaFont}
+              />
+            </div>
           </div>
         </div>
 

@@ -9,6 +9,8 @@ import Home from "./pages/Home";
 import Calendar from "./pages/Calendar";
 import Settings from "./pages/Settings";
 import About from "./pages/About";
+import Events from "./pages/Events";
+import EventDetail from "./pages/EventDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +28,8 @@ const App = () => (
               <div className="max-w-5xl mx-auto">
                 <Routes>
                   <Route path="/" element={<Home />} />
+                  <Route path="/events" element={<Events />} />
+                  <Route path="/events/:id" element={<EventDetail />} />
                   <Route path="/calendar" element={<Calendar />} />
                   <Route path="/settings" element={<Settings />} />
                   <Route path="/about" element={<About />} />

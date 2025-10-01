@@ -88,7 +88,11 @@ export const CountdownHero = () => {
         <p className="text-lg md:text-xl text-muted-foreground">{t.tagline}</p>
       </div>
 
-      <div className="py-8">
+      <div 
+        className="py-8"
+        aria-live="polite"
+        aria-atomic="true"
+      >
         {renderCountdown()}
       </div>
 

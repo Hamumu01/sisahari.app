@@ -42,9 +42,29 @@ All colors MUST be HSL.
     --gradient-start: 240 80% 60%;
     --gradient-end: 280 70% 65%;
     
+    /* Seasonal accent - dynamically set by JS */
+    --season-accent: 240 80% 60%;
+    
     --hero-gradient: linear-gradient(135deg, hsl(var(--gradient-start)), hsl(var(--gradient-end)));
     --card-shadow: 0 4px 20px -4px hsl(var(--primary) / 0.15);
     --card-shadow-hover: 0 8px 30px -6px hsl(var(--primary) / 0.25);
+  }
+
+  /* High Contrast Mode */
+  .high-contrast {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    --card: 0 0% 98%;
+    --muted-foreground: 0 0% 20%;
+    --border: 0 0% 20%;
+  }
+
+  .dark.high-contrast {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 10%;
+    --muted-foreground: 0 0% 80%;
+    --border: 0 0% 80%;
   }
 
   .dark {
@@ -92,5 +112,14 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Dyslexia-friendly font */
+  .dyslexia-font,
+  .dyslexia-font * {
+    font-family: 'Comic Sans MS', 'Arial', sans-serif !important;
+    letter-spacing: 0.05em;
+    word-spacing: 0.16em;
+    line-height: 1.6;
   }
 }

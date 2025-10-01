@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Calendar, Settings, Info } from 'lucide-react';
+import { Home, Calendar, Settings, Info, CalendarDays } from 'lucide-react';
 import { useApp } from '@/contexts/AppContext';
 import { translations } from '@/lib/translations';
 import { cn } from '@/lib/utils';
@@ -11,6 +11,7 @@ export const Navigation = () => {
 
   const links = [
     { to: '/', label: t.home, icon: Home },
+    { to: '/events', label: t.myEvents, icon: CalendarDays },
     { to: '/calendar', label: t.calendar, icon: Calendar },
     { to: '/settings', label: t.settings, icon: Settings },
     { to: '/about', label: t.about, icon: Info },
