@@ -1,0 +1,19 @@
+{
+  "name": "SisaHari - Days Left This Year",
+  "short_name": "SisaHari",
+  "description": "Count down the remaining days in the current year with real-time updates",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#6366f1",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["productivity", "utilities"],
+  "screenshots": []
+}
