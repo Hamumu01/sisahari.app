@@ -22,6 +22,7 @@ export const EventForm = ({ event, onSave, onCancel }: EventFormProps) => {
     event?.targetDate ? new Date(event.targetDate).toISOString().slice(0, 16) : ''
   );
   const [color, setColor] = useState(event?.color || eventColors.blue.value);
+  const [emoji, setEmoji] = useState(event?.emoji || '📅');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,14 +32,50 @@ export const EventForm = ({ event, onSave, onCancel }: EventFormProps) => {
       title: title.trim(),
       targetDate: new Date(targetDate).toISOString(),
       color,
+      emoji,
     });
   };
 
   const isValid = title.trim().length > 0 && targetDate.length > 0;
 
+  const commonEmojis = ['📅', '🎉', '🎂', '🎓', '💼', '✈️', '🏠', '💍', '🎯', '⭐', '🎊', '🎈', '🎁', '❤️', '🔥', '⚡'];
+
   return (
     <Card className="p-6">
       <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="space-y-2">
+          <Label htmlFor="emoji">Icon Event</Label>
+          <div className="space-y-3">
+            <div className="flex items-center gap-3">
+              <div className="w-16 h-16 rounded-lg bg-muted flex items-center justify-center text-4xl border-2 border-border">
+                {emoji}
+              </div>
+              <Input
+                id="emoji"
+                value={emoji}
+                onChange={(e) => setEmoji(e.target.value.slice(0, 2))}
+                placeholder="📅"
+                className="w-20 text-center text-2xl"
+                maxLength={2}
+              />
+            </div>
+            <div className="grid grid-cols-8 gap-2">
+              {commonEmojis.map((e) => (
+                <button
+                  key={e}
+                  type="button"
+                  onClick={() => setEmoji(e)}
+                  className={`h-10 rounded-lg border-2 transition-all hover:scale-110 text-xl ${
+                    emoji === e ? 'border-foreground bg-muted' : 'border-border'
+                  }`}
+                >
+                  {e}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
         <div className="space-y-2">
           <Label htmlFor="title">{t.eventTitle}</Label>
           <Input

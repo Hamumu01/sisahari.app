@@ -3,6 +3,7 @@ export interface CountdownEvent {
   title: string;
   targetDate: string; // ISO string
   color: string;
+  emoji?: string;
   createdAt: string;
 }
 

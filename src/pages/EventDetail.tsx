@@ -55,6 +55,11 @@ const EventDetail = () => {
         <Button variant="ghost" size="icon" onClick={() => navigate('/events')}>
           <ArrowLeft className="w-5 h-5" />
         </Button>
+        {event.emoji && (
+          <div className="text-5xl">
+            {event.emoji}
+          </div>
+        )}
         <h1 className="text-3xl md:text-4xl font-bold text-foreground flex-1">{event.title}</h1>
         <Button variant="outline" size="icon" onClick={() => setShowEditForm(!showEditForm)}>
           <Edit className="w-4 h-4" />
