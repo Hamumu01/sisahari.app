@@ -18,11 +18,7 @@ import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 
 const App = () => {
-  const [showSplash, setShowSplash] = useState(true);
-
-  const handleSplashFinish = () => {
-    setShowSplash(false);
-  };
+  const [showSplash, setShowSplash] = useState(false);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -30,7 +26,6 @@ const App = () => {
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          {showSplash && <SplashScreen onFinish={handleSplashFinish} />}
           <BrowserRouter>
             <div className="min-h-screen flex flex-col md:flex-row w-full">
               <Navigation />
