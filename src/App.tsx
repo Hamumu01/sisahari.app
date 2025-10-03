@@ -18,12 +18,9 @@ import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 
 const App = () => {
-  const [showSplash, setShowSplash] = useState(() => {
-    return !sessionStorage.getItem('sisaSplashSeen');
-  });
+  const [showSplash, setShowSplash] = useState(true);
 
   const handleSplashFinish = () => {
-    sessionStorage.setItem('sisaSplashSeen', '1');
     setShowSplash(false);
   };
 
